@@ -1,12 +1,13 @@
 name: .NET
 on:
   push:
+
 jobs:
   build:
     runs-on: windows-latest
     steps:
-    - uses: actions/checkout@v3
-			name: Checkout
+    - name: Checkout code
+  		uses: actions/checkout@v2
     - name: Setup .NET
       uses: actions/setup-dotnet@v2
       with:
