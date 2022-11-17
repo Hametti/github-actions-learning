@@ -2,20 +2,25 @@ name: .NET
 on:
   push:
 jobs:
-  build:
+  Run unit tests:
     runs-on: windows-latest
     steps:
-    - name: Checkout
+		
+    - name: Clone repository
       uses: actions/checkout@v3
       with:
-        fetch-depth: 0
+        fetch-depth: 1
+
     - name: Setup .NET
       uses: actions/setup-dotnet@v2
       with:
         dotnet-version: 6.0.x
-    - name: Restore dependencies
+
+    - name: Restore nuget packages
       run: dotnet restore
+
     - name: Build
       run: dotnet build --no-restore
-    - name: Test
-      run: dotnet test --no-build --verbosity normal
+
+    - name: Run unit tests
+      run: dotnet test --no-build
