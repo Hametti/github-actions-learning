@@ -1,12 +1,11 @@
 name: .NET
 on:
   push:
-
 jobs:
   build:
     runs-on: windows-latest
     steps:
-  	-	uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     - name: Setup .NET
       uses: actions/setup-dotnet@v2
       with:
@@ -17,3 +16,4 @@ jobs:
       run: dotnet build --no-restore
     - name: Test
       run: dotnet test --no-build --verbosity normal
+			
