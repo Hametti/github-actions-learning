@@ -13,7 +13,7 @@ on:
 # List of jobs to be done in this workflow
 jobs:
 
-  run-unit-tests:
+  run-ui-tests:
     runs-on: windows-latest
 
     steps:
