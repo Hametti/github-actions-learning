@@ -1,7 +1,10 @@
 name: .NET
+
 on:
   push:
+
 jobs:
+
   run-unit-tests:
     runs-on: windows-latest
     steps:
