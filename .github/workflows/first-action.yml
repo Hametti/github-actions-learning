@@ -1,24 +1,37 @@
+# This workflow is responsible for:
+# -Downloading source code from repository
+# -Setting up .NET & Restoring nugets & building solution
+# -Running unit tests
+
+# Workflow name
 name: .NET
 
+# When workflow triggers e.g. "push:" means it will run every "git push"
 on:
   push:
 
+# List of jobs to be done in this workflow
 jobs:
 
   run-unit-tests:
     runs-on: windows-latest
+
     steps:
     - name: Clone repository
       uses: actions/checkout@v3
       with:
         fetch-depth: 1
+
     - name: Setup .NET
       uses: actions/setup-dotnet@v2
       with:
         dotnet-version: 6.0.x
+
     - name: Restore nuget packages
       run: dotnet restore
+
     - name: Build
       run: dotnet build --no-restore
+
     - name: Run unit tests
       run: dotnet test --no-build
