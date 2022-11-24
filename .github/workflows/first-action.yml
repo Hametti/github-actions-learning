@@ -39,4 +39,4 @@ jobs:
 
     # Run unit tests defined in solution
     - name: Run unit tests
-      run: dotnet test GithubPipelinesLearning.UiTests\bin\Debug\net6.0\GithubPipelinesLearning.UiTests.dll --no-build
+      run: dotnet test GithubPipelinesLearning.UiTests.dll --no-build
