@@ -45,7 +45,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: dist-files
-          path: D:/a/github-actions-learning/github-actions-learning/release/
+          path: ${{ github.workspace }}/github-actions-learning/release/
 
       # Run unit tests defined in solution
       - name: Run unit tests
