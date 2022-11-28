@@ -41,17 +41,19 @@ jobs:
 
       # Publish project to create artifacts
       - name: Create main project artifacts
-        run: dotnet publish GithubPipelinesLearning/GithubPipelinesLearning.csproj -c Release -o release --nologo
+        run: dotnet publish GithubPipelinesLearning/GithubPipelinesLearning.csproj -c Release -o main-artifacts --nologo
 
       - name: Create ui tests artifacts
-        run: dotnet publish GithubPipelinesLearning.UiTests/GithubPipelinesLearning.UiTests.csproj -c Release -o release --nologo
+        run: dotnet publish GithubPipelinesLearning.UiTests/GithubPipelinesLearning.UiTests.csproj -c Release -o uitests-artifacts --nologo
 
       # Upload artifacts
       - name: Upload artifacts
         uses: actions/upload-artifact@v3
         with:
           name: ${{ github.ref_name }}-artifacts
-          path: ${{ github.workspace }}\release\
+          path: |
+            ${{ github.workspace }}\main-artifacts\
+            ${{ github.workspace }}\uitests-artifacts\
           if-no-files-found: error
 
   trigger-test-workflows:
