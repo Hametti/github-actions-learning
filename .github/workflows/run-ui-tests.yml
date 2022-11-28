@@ -37,13 +37,25 @@ jobs:
         run: dotnet build --no-restore
 
       # Publish project to create artifacts
-      - name: Publish
+      - name: Publish main project
         run: dotnet publish GithubPipelinesLearning/GithubPipelinesLearning.csproj -c Release -o release --nologo
+
+      - name: Publish ui tests dll
+        run: dotnet publish GithubPipelinesLearning.UnitTests/GithubPipelinesLearning.UnitTests.csproj -c Release -o release --nologo
+
+      - name: Publish unit tests dll
+        run: dotnet publish GithubPipelinesLearning.UiTests/GithubPipelinesLearning.UiTests.csproj -c Release -o release --nologo
 
       # Upload artifacts
       - name: Upload artifacts
         uses: actions/upload-artifact@v3
         with:
           name: ${{ github.ref_name }}-artifacts
-          path: ${{ github.workspace }}\releases\
+          path: ${{ github.workspace }}\release\
           if-no-files-found: error
+
+  check-if-succedeed:
+    runs-on: windows-latest
+    needs: run-ui-tests
+    steps:
+      - run: echo "succeeded"
