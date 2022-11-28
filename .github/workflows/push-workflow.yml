@@ -44,22 +44,22 @@ jobs:
     needs: run-unit-tests
       steps:
       # Publish project to create artifacts
-      - name: Create main project artifacts
-        run: dotnet publish GithubPipelinesLearning/GithubPipelinesLearning.csproj -c Release -o release --nologo
+        - name: Create main project artifacts
+          run: dotnet publish GithubPipelinesLearning/GithubPipelinesLearning.csproj -c Release -o release --nologo
 
-      - name: Publish ui tests artifacts
-        run: dotnet publish GithubPipelinesLearning.UnitTests/GithubPipelinesLearning.UnitTests.csproj -c Release -o release --nologo
+        - name: Publish ui tests artifacts
+          run: dotnet publish GithubPipelinesLearning.UnitTests/GithubPipelinesLearning.UnitTests.csproj -c Release -o release --nologo
 
-      - name: Publish unit tests artifacts
-        run: dotnet publish GithubPipelinesLearning.UiTests/GithubPipelinesLearning.UiTests.csproj -c Release -o release --nologo
+        - name: Publish unit tests artifacts
+          run: dotnet publish GithubPipelinesLearning.UiTests/GithubPipelinesLearning.UiTests.csproj -c Release -o release --nologo
 
-      # Upload artifacts
-      - name: Upload artifacts
-        uses: actions/upload-artifact@v3
-        with:
-          name: ${{ github.ref_name }}-artifacts
-          path: ${{ github.workspace }}\release\
-          if-no-files-found: error
+        # Upload artifacts
+        - name: Upload artifacts
+          uses: actions/upload-artifact@v3
+          with:
+            name: ${{ github.ref_name }}-artifacts
+            path: ${{ github.workspace }}\release\
+            if-no-files-found: error
 
   trigger-test-workflows:
     runs-on: windows-latest
