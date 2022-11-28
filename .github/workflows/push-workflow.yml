@@ -43,10 +43,7 @@ jobs:
       - name: Create main project artifacts
         run: dotnet publish GithubPipelinesLearning/GithubPipelinesLearning.csproj -c Release -o release --nologo
 
-      - name: Publish ui tests artifacts
-        run: dotnet publish GithubPipelinesLearning.UnitTests/GithubPipelinesLearning.UnitTests.csproj -c Release -o release --nologo
-
-      - name: Publish unit tests artifacts
+      - name: Create ui tests artifacts
         run: dotnet publish GithubPipelinesLearning.UiTests/GithubPipelinesLearning.UiTests.csproj -c Release -o release --nologo
 
       # Upload artifacts
