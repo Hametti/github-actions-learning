@@ -59,6 +59,6 @@ jobs:
 
   trigger-test-workflows:
     runs-on: windows-latest
-    needs: upload-artifacts
+    needs: run-unit-tests
     steps:
       - run: echo "succeeded"
