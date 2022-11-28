@@ -6,7 +6,7 @@
 # Workflow name
 name: .NET
 
-# When workflow triggers e.g. "push:" means it will run every "git push"
+# Workflow trigger condition
 on:
   push:
 
@@ -39,16 +39,14 @@ jobs:
 
     # Publish project to create artifacts
     - name: Publish
-      run: dotnet publish GithubPipelinesLearning/GithubPipelinesLearning.csproj -c Release -o release --nologo
+      run: dotnet publish GithubPipelinesLearning.UiTests/GithubPipelinesLearning.UiTests.csproj -c Release -o release --nologo
 
-    # # Upload artifacts
-    # - name: Upload artifacts
-    #   uses: actions/upload-artifact@v3
-    #   with:
-    #     name: dist-files
-    #     path: |
-    #       dist
-    #       package.json
+    # Upload artifacts
+    - name: Upload artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: dist-files
+        path: /home/runner/work/GithubPipelinesLearning.UiTests/GithubPipelinesLearning.UiTests/release
 
     # Run unit tests defined in solution
     - name: Run unit tests
