@@ -35,14 +35,10 @@ jobs:
       - name: Build
         run: dotnet build --no-restore
 
-        # Run unit tests defined in solution
+      # Run unit tests defined in solution
       - name: Run unit tests
         run: dotnet test GithubPipelinesLearning.UnitTests\bin\Debug\net6.0\GithubPipelinesLearning.UnitTests.dll --no-build
 
-  upload-artifacts:
-    runs-on: windows-latest
-    needs: run-unit-tests
-    steps:
       # Publish project to create artifacts
       - name: Create main project artifacts
         run: dotnet publish GithubPipelinesLearning/GithubPipelinesLearning.csproj -c Release -o release --nologo
