@@ -45,8 +45,5 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: ${{ github.ref_name }}-artifacts
-          path: ${{ github.workspace }}\release\
-
-      # Run unit tests defined in solution
-      - name: Run unit tests
-        run: dotnet test GithubPipelinesLearning.UnitTests\bin\Debug\net6.0\GithubPipelinesLearning.UnitTests.dll --no-build
+          path: ${{ github.workspace }}\releases\
+          if-no-files-found: error
