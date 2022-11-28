@@ -37,6 +37,19 @@ jobs:
     - name: Build
       run: dotnet build --no-restore
 
+    # Publish project to create artifacts
+    - name: Publish
+      run: dotnet publish GithubPipelinesLearning/GithubPipelinesLearning.csproj -c Release -o release --nologo
+
+    # # Upload artifacts
+    # - name: Upload artifacts
+    #   uses: actions/upload-artifact@v3
+    #   with:
+    #     name: dist-files
+    #     path: |
+    #       dist
+    #       package.json
+
     # Run unit tests defined in solution
     - name: Run unit tests
       run: dotnet test GithubPipelinesLearning.UnitTests\bin\Debug\net6.0\GithubPipelinesLearning.UnitTests.dll --no-build
