@@ -25,7 +25,7 @@ jobs:
         with:
           dotnet-version: 6.0.x
 
-      # Restore nuget packages defined in solutionn
+      # Restore nuget packages defined in solution
       - name: Restore nuget packages
         run: dotnet restore
 
