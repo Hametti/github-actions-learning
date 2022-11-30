@@ -34,7 +34,7 @@ jobs:
       - name: Run unit tests
         run: dotnet test GithubPipelinesLearning.UnitTests\bin\Debug\net6.0\GithubPipelinesLearning.UnitTests.dll --no-build
 
-      # Publish project to create artifacts test
+      # Publish project to create artifacts
       - name: Create main project artifacts
         run: dotnet publish GithubPipelinesLearning/GithubPipelinesLearning.csproj -c Release -o main-artifacts --nologo
 
