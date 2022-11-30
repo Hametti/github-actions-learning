@@ -15,7 +15,7 @@ on:
 # List of jobs to be done in this workflow
 jobs:
   run-unit-tests:
-    runs-on: windows-latest
+    runs-on: self-hosted
     steps:
       # Clone repository
       - name: Clone repository
