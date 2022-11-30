@@ -4,11 +4,13 @@
 # -Running unit tests
 
 # Workflow name
-name: push-workflow
+name: ui-tests-workflow
 
-# Workflow trigger condition
 on:
-  push:
+  workflow_run:
+    workflows: [pr-workflow]
+    types:
+      - completed
 
 # List of jobs to be done in this workflow
 jobs:
@@ -37,4 +39,4 @@ jobs:
 
       # Run unit tests defined in solution
       - name: Run unit tests
-        run: dotnet test GithubPipelinesLearning.UnitTests\bin\Debug\net6.0\GithubPipelinesLearning.UnitTests.dll --no-build
+        run: dotnet test GithubPipelinesLearning.UiTests\bin\Debug\net6.0\GithubPipelinesLearning.UiTests.dll --no-build

@@ -1,0 +1,58 @@
+# Workflow name
+name: pr-workflow
+
+# Workflow trigger condition
+on:
+  pull_request:
+
+# List of jobs to be done in this workflow
+jobs:
+  run-unit-tests:
+    runs-on: windows-latest
+    steps:
+      # Clone repository
+      - name: Clone repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 1
+
+      # Install .NET Core
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v2
+        with:
+          dotnet-version: 6.0.x
+
+      # Restore nuget packages defined in solution
+      - name: Restore nuget packages
+        run: dotnet restore
+
+      # Build solution
+      - name: Build
+        run: dotnet build --no-restore
+
+      # Run unit tests defined in solution
+      - name: Run unit tests
+        run: dotnet test GithubPipelinesLearning.UnitTests\bin\Debug\net6.0\GithubPipelinesLearning.UnitTests.dll --no-build
+
+      # Publish project to create artifacts
+      - name: Create main project artifacts
+        run: dotnet publish GithubPipelinesLearning/GithubPipelinesLearning.csproj -c Release -o main-artifacts --nologo
+
+      - name: Create ui tests artifacts
+        run: dotnet publish GithubPipelinesLearning.UiTests/GithubPipelinesLearning.UiTests.csproj -c Release -o uitests-artifacts --nologo
+
+      # Upload artifacts
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: ${{ github.ref_name }}-artifacts
+          path: |
+            ${{ github.workspace }}\main-artifacts\
+            ${{ github.workspace }}\uitests-artifacts\
+          if-no-files-found: error
+
+  trigger-test-workflows:
+    runs-on: windows-latest
+    needs: run-unit-tests
+    steps:
+      - run: echo "succeeded"
