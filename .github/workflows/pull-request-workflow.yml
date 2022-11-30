@@ -4,6 +4,9 @@ name: pr-workflow
 # Workflow trigger condition
 on:
   pull_request:
+    branches:
+      - "*"
+      - "!main"
 
 # List of jobs to be done in this workflow
 jobs:
@@ -22,7 +25,7 @@ jobs:
         with:
           dotnet-version: 6.0.x
 
-      # Restore nuget packages defined in solution
+      # Restore nuget packages defined in solutionn
       - name: Restore nuget packages
         run: dotnet restore
 
