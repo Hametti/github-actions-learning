@@ -45,7 +45,7 @@ jobs:
       - name: Upload artifacts
         uses: actions/upload-artifact@v3
         with:
-          name: ${{ github.ref_name }}-artifacts
+          name: test-artifacts
           path: |
             ${{ github.workspace }}\main-artifacts\
             ${{ github.workspace }}\uitests-artifacts\
