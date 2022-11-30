@@ -4,9 +4,6 @@ name: pr-workflow
 # Workflow trigger condition
 on:
   pull_request:
-    branches:
-      - "*"
-      - "!main"
 
 # List of jobs to be done in this workflow
 jobs:

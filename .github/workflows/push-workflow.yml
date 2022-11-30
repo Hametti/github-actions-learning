@@ -9,6 +9,9 @@ name: push-workflow
 # Workflow trigger condition
 on:
   push:
+    branches:
+      - "*"
+      - "!main"
 
 # List of jobs to be done in this workflow
 jobs:
