@@ -10,7 +10,7 @@ on:
 
 # List of jobs to be done in this workflow
 jobs:
-  run-unit-tests:
+  Run_unit_tests:
     runs-on: windows-latest
     steps:
       # Clone repository
@@ -40,5 +40,5 @@ jobs:
   Run_1st_part_of_ui_tests:
     uses: ./.github/workflows/workflow_call_1.yml
 
-  Run 2nd part of ui tests:
+  Run_2nd_part_of_ui_tests:
     uses: ./.github/workflows/workflow_call_2.yml
