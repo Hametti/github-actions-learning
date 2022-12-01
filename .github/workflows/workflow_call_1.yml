@@ -35,6 +35,6 @@ jobs:
       - name: Build
         run: dotnet build --no-restore
 
-      # Run unit tests defined in solution
+      # Run unit tests defined in solutionn
       - name: Run Ui tests
         run: dotnet test GithubPipelinesLearning.UiTests2\bin\Debug\net6.0\GithubPipelinesLearning.UiTests2.dll --no-build
