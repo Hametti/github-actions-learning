@@ -9,7 +9,7 @@ name: ui-tests-workflow
 on:
   workflow_dispatch:
 
-# List of jobs to be done in this workflow
+# List of jobs to be done in this workfloww
 jobs:
   call-workflow-1-in-local-repo:
     uses: ./.github/workflows/workflow_call_1.yml
