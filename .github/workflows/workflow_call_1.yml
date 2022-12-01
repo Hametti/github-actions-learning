@@ -34,7 +34,7 @@ jobs:
       # Build solution
       - name: Build
         run: dotnet build --no-restore
-
-      # Run unit tests defined in solutionasdasd
-      - name: Run Ui tests
-        run: dotnet test GithubPipelinesLearning.UiTests2\bin\Debug\net6.0\GithubPipelinesLearning.UiTests2.dll --no-build
+        
+      # Run unit tests defined in solution
+      - name: Run unit tests
+        run: dotnet test GithubPipelinesLearning.UnitTests\bin\Debug\net6.0\GithubPipelinesLearning.UnitTests.dll --no-build
