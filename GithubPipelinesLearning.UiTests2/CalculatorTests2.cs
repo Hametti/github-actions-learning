@@ -26,6 +26,7 @@ namespace GithubPipelinesLearning.UiTests2
         [TestCase(2.5, 2.4)]
         public void Calculator_Add_Throws_Exception(object x, object y)
         {
+            //This is specific version of file #1
             Assert.Throws<ArgumentException>(() => Calculator.Add(x, y));
         }
     }
