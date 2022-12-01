@@ -7,7 +7,7 @@
 name: workflow_call_tests
 on:
   workflow_dispatch:
-# List of jobs to be done in this workfloww
+# List of jobs to be done in this workflow
 jobs:
   call-workflow-1-in-local-repo:
     uses: ./.github/workflows/workflow_call_1.yml
