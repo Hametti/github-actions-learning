@@ -50,9 +50,3 @@
 #             ${{ github.workspace }}\main-artifacts\
 #             ${{ github.workspace }}\uitests-artifacts\
 #           if-no-files-found: error
-
-#   trigger-test-workflows:
-#     runs-on: windows-latest
-#     needs: run-unit-tests
-#     steps:
-#       - run: echo "succeeded"
