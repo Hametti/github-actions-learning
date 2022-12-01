@@ -5,6 +5,11 @@ name: workflow_call_1
 on:
   workflow_call:
 
+# After pushing new commit, previous jobs will be cancelled
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
 # List of jobs to be done in this workflow
 jobs:
   run-ui-tests:
