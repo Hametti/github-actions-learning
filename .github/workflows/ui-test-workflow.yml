@@ -14,7 +14,7 @@ on:
 
 # List of jobs to be done in this workflow
 jobs:
-  run-unit-tests:
+  run-ui-tests:
     runs-on: self-hosted
     steps:
       # Clone repository
@@ -37,6 +37,6 @@ jobs:
       - name: Build
         run: dotnet build --no-restore
 
-      # Run unit tests defined in solution
-      - name: Run unit tests
+      # Run ui tests defined in solution
+      - name: Run ui tests
         run: dotnet test GithubPipelinesLearning.UiTests\bin\Debug\net6.0\GithubPipelinesLearning.UiTests.dll --no-build
