@@ -13,6 +13,9 @@ namespace GithubPipelinesLearning.UnitTests
         [TestCase(false, true)]
         public void IsDivider_Returns_Proper_Values(bool expectedResult, object divider)
         {
+            if ((int)divider == 0)
+                throw new Exception();
+
             Assert.That(Validator.IsDividerCorrect(divider), Is.EqualTo(expectedResult));
         }
     }

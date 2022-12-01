@@ -12,9 +12,6 @@ namespace GithubPipelinesLearning.UiTests
         [TestCase(-2147483648, 2147483647)]
         public void Calculator_Add_Doesnt_Throw_Exception(int x, int y)
         {
-            if (x == 1)
-                throw new Exception();
-
             Assert.DoesNotThrow(() => Calculator.Add(x, y));
         }
 
