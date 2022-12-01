@@ -38,7 +38,9 @@ jobs:
         run: dotnet test GithubPipelinesLearning.UnitTests\bin\Debug\net6.0\GithubPipelinesLearning.UnitTests.dll --no-build
 
   Run_1st_part_of_ui_tests:
+    needs: Run_unit_tests
     uses: ./.github/workflows/workflow_call_1.yml
 
   Run_2nd_part_of_ui_tests:
+    needs: Run_unit_tests
     uses: ./.github/workflows/workflow_call_2.yml
