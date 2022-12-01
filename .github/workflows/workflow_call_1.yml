@@ -1,20 +1,14 @@
-# This workflow is responsible for:
-# -Downloading source code from repository
-# -Setting up .NET & Restoring nugets & building solution
-# -Running unit tests
-
 # Workflow name
-name: .NET
+name: workflow_call_1
 
 # Workflow trigger condition
 on:
-  push:
+  workflow_call:
 
 # List of jobs to be done in this workflow
 jobs:
   run-ui-tests:
-    runs-on: windows-latest
-
+    runs-on: self-hosted
     steps:
       # Clone repository
       - name: Clone repository
@@ -35,17 +29,6 @@ jobs:
       # Build solution
       - name: Build
         run: dotnet build --no-restore
-
-      # Publish project to create artifacts
-      - name: Publish
-        run: dotnet publish GithubPipelinesLearning/GithubPipelinesLearning.csproj -c Release -o release --nologo
-
-      # Upload artifacts
-      - name: Upload artifacts
-        uses: actions/upload-artifact@v3
-        with:
-          name: ${{ github.ref_name }}-artifacts
-          path: ${{ github.workspace }}\release\
 
       # Run unit tests defined in solution
       - name: Run unit tests
