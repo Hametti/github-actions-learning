@@ -23,6 +23,7 @@ namespace GithubPipelinesLearning.UiTests
         [TestCase(2.5, 2.4)]
         public void Calculator_Add_Throws_Exception(object x, object y)
         {
+            //Not specific line of code #-2222
             Assert.Throws<ArgumentException>(() => Calculator.Add(x, y));
         }
     }
