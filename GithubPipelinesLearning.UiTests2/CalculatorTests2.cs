@@ -1,8 +1,11 @@
-namespace GithubPipelinesLearning.UiTests
+namespace GithubPipelinesLearning.UiTests2
 {
-    [TestFixture]
-    public class CalculatorTests
+    public class CalculatorTests2
     {
+        [SetUp]
+        public void Setup()
+        {
+        }
 
         [Test]
         [TestCase(0, 0)]
