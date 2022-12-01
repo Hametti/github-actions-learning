@@ -1,44 +1,44 @@
-# This workflow is responsible for:
-# -Downloading source code from repository
-# -Setting up .NET & Restoring nugets & building solution
-# -Running unit tests
+# # This workflow is responsible for:
+# # -Downloading source code from repository
+# # -Setting up .NET & Restoring nugets & building solution
+# # -Running unit tests
 
-# Workflow name
-name: ui-tests-workflow
+# # Workflow name
+# name: ui-tests-workflow
 
-on:
-  workflow_run:
-    workflows: [pr-workflow]
-    types:
-      - completed
+# on:
+#   workflow_run:
+#     workflows: [pr-workflow]
+#     types:
+#       - completed
 
-# List of jobs to be done in this workflow
-jobs:
-  run-ui-tests:
-    name: Ui tests job
-    if: github.event.workflow_run.conclusion == 'success' && (github.ref == 'refs/heads/dev' || github.ref == 'refs/heads/master')
-    runs-on: self-hosted
-    steps:
-      # Clone repository
-      - name: Clone repository
-        uses: actions/checkout@v3
-        with:
-          fetch-depth: 1
+# # List of jobs to be done in this workflow
+# jobs:
+#   run-ui-tests:
+#     name: Ui tests job
+#     if: github.event.workflow_run.conclusion == 'success' && (github.ref == 'refs/heads/dev' || github.ref == 'refs/heads/master')
+#     runs-on: self-hosted
+#     steps:
+#       # Clone repository
+#       - name: Clone repository
+#         uses: actions/checkout@v3
+#         with:
+#           fetch-depth: 1
 
-      # Install .NET Core
-      - name: Setup .NET
-        uses: actions/setup-dotnet@v2
-        with:
-          dotnet-version: 6.0.x
+#       # Install .NET Core
+#       - name: Setup .NET
+#         uses: actions/setup-dotnet@v2
+#         with:
+#           dotnet-version: 6.0.x
 
-      # Restore nuget packages defined in solution
-      - name: Restore nuget packages
-        run: dotnet restore
+#       # Restore nuget packages defined in solution
+#       - name: Restore nuget packages
+#         run: dotnet restore
 
-      # Build solution
-      - name: Build
-        run: dotnet build --no-restore
+#       # Build solution
+#       - name: Build
+#         run: dotnet build --no-restore
 
-      # Run ui tests defined in solution
-      - name: Run ui tests
-        run: dotnet test GithubPipelinesLearning.UiTests\bin\Debug\net6.0\GithubPipelinesLearning.UiTests.dll --no-build
+#       # Run ui tests defined in solution
+#       - name: Run ui tests
+#         run: dotnet test GithubPipelinesLearning.UiTests\bin\Debug\net6.0\GithubPipelinesLearning.UiTests.dll --no-build

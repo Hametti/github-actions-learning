@@ -1,0 +1,17 @@
+# This workflow is responsible for:
+# -Downloading source code from repository
+# -Setting up .NET & Restoring nugets & building solution
+# -Running unit tests
+
+# Workflow name
+name: ui-tests-workflow
+
+on:
+  workflow_dispatch:
+
+# List of jobs to be done in this workflow
+jobs:
+  call-workflow-1-in-local-repo:
+    uses: ./.github/workflows/workflow_call_1.yml
+  call-workflow-2-in-local-repo:
+    uses: ./.github/workflows/workflow_call_2.yml
