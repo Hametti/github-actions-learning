@@ -10,9 +10,6 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GithubPipelinesLearning.UiTests", "GithubPipelinesLearning.UiTests\GithubPipelinesLearning.UiTests.csproj", "{EACBF732-0BCA-4742-A55A-D76F8BA3AB1B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GithubPipelinesLearning.UiTests2", "GithubPipelinesLearning.UiTests2\GithubPipelinesLearning.UiTests2.csproj", "{4187CD25-6278-448B-8589-29D6BE88DEC7}"
-	ProjectSection(ProjectDependencies) = postProject
-		{34FC40E3-F4AF-4FC4-9F1A-38797CCEE352} = {34FC40E3-F4AF-4FC4-9F1A-38797CCEE352}
-	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
