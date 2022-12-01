@@ -37,14 +37,8 @@ jobs:
       - name: Run unit tests
         run: dotnet test GithubPipelinesLearning.UnitTests\bin\Debug\net6.0\GithubPipelinesLearning.UnitTests.dll --no-build
 
-  # Run 1st part of ui tests
   call-workflow-1-in-local-repo:
+    runs-on: windows-latest
     steps:
       - name: Run 1st part of ui tests
         uses: ./.github/workflows/workflow_call_1.yml
-
-  # Run 2nd part of ui tests
-  call-workflow-1-in-local-repo:
-    steps:
-      - name: Run 2nd part of ui tests
-        uses: ./.github/workflows/workflow_call_2.yml
