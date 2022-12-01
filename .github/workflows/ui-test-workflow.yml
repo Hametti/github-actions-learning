@@ -15,8 +15,9 @@ on:
 # List of jobs to be done in this workflow
 jobs:
   run-ui-tests:
+    name: Ui tests job
+    if: github.event.workflow_run.conclusion == 'success' && (github.ref == 'refs/heads/dev' || github.ref == 'refs/heads/master')
     runs-on: self-hosted
-    if: github.event.workflow_run.conclusion == 'success'
     steps:
       # Clone repository
       - name: Clone repository
